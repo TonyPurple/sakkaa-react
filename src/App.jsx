@@ -22,6 +22,11 @@ class App extends Component {
     }
   }
 
+  handle_logout = () => {
+    localStorage.removeItem('token');
+    this.setState({ user: null });
+  };
+
   render() {
     return (
       <main className="App">
@@ -35,6 +40,7 @@ class App extends Component {
             <NavLink exact to='/'>CLUBS LIST</NavLink>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/add'>ADD CLUB</NavLink>
+            <button className="btn-danger" onClick={this.handle_logout}>Logout</button>
           </nav>
           <Redirect to="/orders" />
           </Switch>
