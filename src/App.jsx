@@ -1,29 +1,49 @@
 import React, {Component} from 'react';
 import './App.css';
 import {NavLink} from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
+import AuthPage from './pages/AuthPage/AuthPage.jsx'
 
 class App extends Component {
   state = {
-    clubs: []
-  };
+    user: null,
+  }
+
+  setUserInState = (incomingUserData) => {
+    this.setState({ user: incomingUserData})
+  }
+
+  componentDidMount() {
+    let token = window.localStorage.getItem('token')
+    if (token) {
+
+      let userDoc = JSON.parse(window.atob(token.split('.')[1])).user 
+      this.setState({user: userDoc})      
+    }
+  }
 
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <header className="App-header">
           サッカー　Sakkaa
+          </header>
+          <br />
+          { this.state.user ? 
+            <Switch>
           <nav>
             <NavLink exact to='/'>CLUBS LIST</NavLink>
             &nbsp;&nbsp;&nbsp;
             <NavLink exact to='/add'>ADD CLUB</NavLink>
           </nav>
-        </header>
-        <main>
-        <h1>test</h1>
+          <Redirect to="/orders" />
+          </Switch>
+          :
+          <AuthPage setUserInState={this.setUserInState}/>
+        }
         </main>
-      </div>
     );
   }
 }
 
-export default App; 
+export default App;
