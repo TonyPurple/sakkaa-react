@@ -2,9 +2,17 @@ const express = require('express');
 const router = express.Router();
 const usersCtrl = require('../../controllers/users');
 
-// POST /api/users/signup
-router.post('/signup', usersCtrl.create);
-// POST /api/users/login
-router.post('/login', usersCtrl.login);
+/*---------- Public Routes ----------*/
+
+
+/*---------- Protected Routes ----------*/
+router.use(require("../../config/auth"));
+router.get("/", checkAuth, usersCtrl.index);
+
+/*---------- Auth Checker ----------*/
+function checkAuth(req, res, next) {
+  if (req.user) return next();
+  return res.status(401).json({msg: 'Not Authorized'});
+}
 
 module.exports = router;
