@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -6,7 +7,12 @@ const logger = require('morgan');
 require('dotenv').config()
 require('./config/database.js')
 
-const app = express();
+const userRouter = require('./routes/api/users');
+const authRouter = require('./routes/auth');
+
+const cors = require('cors')
+
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -17,8 +23,8 @@ if (process.env.NODE_ENV === 'production' || process.env.PREVIEW === 'true') {
 }
 
 //API Routes
-app.use('/api/users', require('./routes/api/users'));
-app.use(require('./config/auth'));
+app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
