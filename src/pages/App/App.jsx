@@ -10,6 +10,7 @@ import * as messageAPI from '../../services/messages-api'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
+import ProfilePage from "../Profile/Profile";
 
 class App extends Component {
   constructor(){
@@ -97,6 +98,12 @@ class App extends Component {
         } />
         <Route exact path='/messages/add' render={() =>
           <MessagePost 
+            handleMessagePost={this.handleMessagePost}
+            user={this.state.user}
+          />
+        } />
+        <Route exact path='/profile' render={() =>
+          <ProfilePage
             handleMessagePost={this.handleMessagePost}
             user={this.state.user}
           />
