@@ -33,7 +33,7 @@ const NavBar = ({ user, handleLogout }) => {
           <div className="nav-wrapper">
           <ul id="nav-mobile" className="left">
           <ul className="nav justify-content-start align-items-center">
-          <a href="/"><img className="nav-logo" src="/sakkaa-logos.jpeg" height='150' alt="logo" border="0"/></a>
+          <a href="/"><img className="nav-logo" src="/sakkaa-logos_black.png" height='150' alt="logo" border="0"/></a>
             <li className="nav-item">
                 <a className="nav-link" href="/messages">Message Board</a>
             </li>
