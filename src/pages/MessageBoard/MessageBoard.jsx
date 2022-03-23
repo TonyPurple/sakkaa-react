@@ -9,7 +9,7 @@ function MessageBoard(props, message) {
             <div className="message-board-div">
                 <h1 id="logo-1">Message Board</h1>
                 <a className="btn" href="/messages/add">Post Message</a>
-                <Table striped bordered hover variant="dark">
+                <Table striped bordered hover responsive variant="dark">
                     <thead>
                         <tr>
                         <th>Topic:</th>

@@ -13,7 +13,7 @@ const NavBar = ({ user, handleLogout }) => {
                     <a className="nav-link" href="/messages">Message Board</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/ballots">Ballot Index</a>
+                    <a className="nav-link" href="/players">Players Index</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/users">Users</a>

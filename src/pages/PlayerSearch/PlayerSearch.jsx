@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import SearchForm from '../../components/SearchBar/SearchBar'
+import axios from 'axios'
 
 class PlayerSearch extends Component {
-    state = {  }
+
     render() { 
         return ( 
             <>
-                <h3>Players go here</h3>
+                <h3>Player Data should appear here</h3>
                 <SearchForm />
             </>
          );
