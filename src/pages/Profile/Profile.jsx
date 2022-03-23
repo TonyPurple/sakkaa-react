@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { Component } from "react";
+import { getAllProfiles } from "../../services/profileService";
 
-export default class ProfilePage extends React.Component {
-    render() {
-        return (
-            <main className="ProfilePage">
-                <div>ProfilePage</div>
-                <p>this.profile._id</p>
-            </main>
-        );
-    }
-};
+class Profiles extends Component {
+  state = {
+    profiles: [],
+  };
+
+  async componentDidMount() {
+    const profiles = await getAllProfiles();
+    this.setState({ profiles });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Hello. This is a list of all the profiles.</h1>
+        {this.state.profiles.map((profile) => (
+          <p key={profile._id}>{profile.name} </p>
+        ))}
+      </>
+    );
+  }
+}
+
+export default Profiles;
