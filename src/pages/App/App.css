@@ -31,3 +31,8 @@ div, button {
 .nav-logo {
   border-radius: 5px;
 }
+
+body {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}

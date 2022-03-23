@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Route, Redirect } from "react-router-dom";
+import "./App.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
