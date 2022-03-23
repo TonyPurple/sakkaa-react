@@ -12,10 +12,12 @@ import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
 
 class App extends Component {
-  state = {
+  constructor(){
+    super();
+    this.state = {
     user: authService.getUser(),
     messages: [],
-  };
+  }};
 
   handleLogout = () => {
     authService.logout();
@@ -45,6 +47,11 @@ class App extends Component {
     this.setState(state => ({
       messages: [...state.messages, newMessage]
     }), () => this.props.history.push('/messages'));
+  }
+
+  async componentDidMount() {
+    const messages = await messageAPI.getAll();
+    this.setState({ messages })
   }
 
   render() {

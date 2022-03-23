@@ -1,29 +1,28 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
 
-function MessageTable(message) {
+import { Link } from 'react-router-dom';
+
+function MessageTable(props) {
     return (
         <>
-            <h1>Message Board</h1>
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                    <th>Topic:</th>
-                    <th>Posted By:</th>
-                    <th>Replies:</th>
-                    <th>Date Added:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>{message.topic}</td>
-                    <td>{message.postedBy.name}</td>
-                    <td>{message.replies.length}</td>
-                    <td>{message.dateAdded}</td>
-                    </tr>
-                </tbody>
-            </Table>
-            </>
+            <tbody>
+                <tr>
+                    <td>{props.message.topic}</td>
+                    <td>{props.message.postedBy.name}</td>
+                    <td>{props.message.replies.length}</td>
+                    <td>{props.message.createdAt.toLocaleString()}</td>
+                    <td 
+                        className="view-link">
+                            <Link
+                            to={{
+                                pathname: '/replies',
+                                state: props.message
+                            }}>
+                            View Message
+                            </Link></td>
+                </tr>
+            </tbody>
+        </>
     )
 }
 
