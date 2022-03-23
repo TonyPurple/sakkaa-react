@@ -11,6 +11,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
 import ProfilePage from "../Profile/Profile";
+import PlayerSearch from "../PlayerSearch/PlayerSearch";
 
 class App extends Component {
   constructor(){
@@ -104,6 +105,12 @@ class App extends Component {
         } />
         <Route exact path='/profile' render={() =>
           <ProfilePage
+            handleMessagePost={this.handleMessagePost}
+            user={this.state.user}
+          />
+        } />
+        <Route exact path='/players' render={() =>
+          <PlayerSearch
             handleMessagePost={this.handleMessagePost}
             user={this.state.user}
           />
