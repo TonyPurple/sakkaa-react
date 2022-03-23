@@ -6,10 +6,15 @@ import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from '../Users/Users'
 import "./App.css";
+import * as messageAPI from '../../services/messages-api'
+import LandingPage from '../LandingPage/LandingPage'
+import MessageBoard from '../MessageBoard/MessageBoard'
+import MessagePost from "../MessagePost/MessagePost";
 
 class App extends Component {
   state = {
     user: authService.getUser(),
+    messages: [],
   };
 
   handleLogout = () => {
@@ -22,20 +27,31 @@ class App extends Component {
     this.setState({ user: authService.getUser() });
   };
 
+  getHashParams() {
+    var hashParams = {};
+    var e, r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1);
+    e = r.exec(q)
+    while (e) {
+       hashParams[e[1]] = decodeURIComponent(e[2]);
+       e = r.exec(q);
+    }
+    return hashParams;
+  }
+
+  handleMessagePost = async newMessageData => {
+    const newMessage = await messageAPI.create(newMessageData);
+    newMessage.postedBy = { name: this.state.user.name, _id: this.state.user._id }
+    this.setState(state => ({
+      messages: [...state.messages, newMessage]
+    }), () => this.props.history.push('/messages'));
+  }
+
   render() {
     const { user } = this.state
     return (
       <>
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <main>
-              <h1>サッカー Sakkaa</h1>
-            </main>
-          )}
-        />
         <Route
           exact
           path="/signup"
@@ -63,6 +79,21 @@ class App extends Component {
             user ? <Users /> : <Redirect to="/login" />
           }
         />
+        <Route exact path='/' render={() =>
+          <LandingPage />
+        } />
+        <Route exact path='/messages' render={() =>
+          <MessageBoard 
+          messages = {this.state.messages}
+          user={this.state.user}
+          />
+        } />
+        <Route exact path='/messages/add' render={() =>
+          <MessagePost 
+            handleMessagePost={this.handleMessagePost}
+            user={this.state.user}
+          />
+        } />
       </>
     );
   }
