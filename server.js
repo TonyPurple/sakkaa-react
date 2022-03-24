@@ -9,8 +9,8 @@ require('dotenv').config()
 require('./config/database.js')
 
 const userRouter = require('./routes/api/users');
-const authRouter = require('./routes/auth');
-const messageRouter = require('./routes/messages')
+const authRouter = require('./routes/api/auth');
+const messageRouter = require('./routes/api/messages')
 const playersRouter = require('./routes/api/players')
 const profilesRouter = require('./routes/api/profiles')
 
