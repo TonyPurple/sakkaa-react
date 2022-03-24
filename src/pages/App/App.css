@@ -20,8 +20,12 @@ div, button {
   margin: 10px;
 }
 
+.nav-item {
+  font-size: 15px;
+}
+
 .nav-link {
-  font-size: 20px;
+  font-size: 15px;
   color: black;
 }
 .nav-link:hover {
