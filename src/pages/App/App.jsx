@@ -11,7 +11,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
 import ProfilePage from "../Profile/Profile";
-import PlayerSearch from "../PlayerSearch/PlayerSearch";
+import CountryPage from "../CountryPage/CountryPage";
 
 class App extends Component {
   constructor(){
@@ -109,8 +109,8 @@ class App extends Component {
             user={this.state.user}
           />
         } />
-        <Route exact path='/players' render={() =>
-          <PlayerSearch
+        <Route exact path='/countries' render={() =>
+          <CountryPage
             handleMessagePost={this.handleMessagePost}
             user={this.state.user}
           />
