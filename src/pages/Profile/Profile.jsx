@@ -13,14 +13,19 @@ class Profiles extends Component {
 
   render() {
     return (
-      <>
-        <h1>Hello. This is a list of all the profiles.</h1>
-        {this.state.profiles.map((profile) => (
-          <p key={profile._id}>{profile.name} </p>
-        ))}
-      </>
-    );
-  }
-}
+        <>
+          <h1>Hello. This is a list of all the profiles.</h1>
+          {this.state.profiles.length ? 
+            <>
+              {this.state.profiles.map(profile=>
+                <p key={profile._id}>{profile.name}</p>
+              )}
+            </>
+          :
+            <p>No profiles yet</p>
+          }
+        </>
+      )
+    }}
 
 export default Profiles;
