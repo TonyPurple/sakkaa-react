@@ -13,6 +13,7 @@ const authRouter = require('./routes/api/auth');
 const messageRouter = require('./routes/api/messages')
 const playersRouter = require('./routes/api/players')
 const profilesRouter = require('./routes/api/profiles')
+const apiRouter = require('./routes/api/api-requests')
 
 app.use(cors());
 
@@ -30,6 +31,7 @@ app.use('/api/users', userRouter);
 app.use('/api/messages', messageRouter)
 app.use('/api/players', playersRouter)
 app.use('/api/profile', profilesRouter)
+app.use('/api/api-requests', apiRouter)
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
