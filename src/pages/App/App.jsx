@@ -10,6 +10,8 @@ import * as messageAPI from '../../services/messages-api'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
+import Replies from '../Replies/Replies'
+import MessageEdit from '../MessageEdit/MessageEdit'
 import ProfilePage from "../Profile/Profile";
 import CountryPage from "../CountryPage/CountryPage";
 
@@ -49,6 +51,40 @@ class App extends Component {
     this.setState(state => ({
       messages: [...state.messages, newMessage]
     }), () => this.props.history.push('/messages'));
+  }
+
+  handleUpdateMessage = async updatedMessageData => {
+    const updatedMessage = await messageAPI.update(updatedMessageData);
+    const newMessagesArray = this.state.messages.map(m => 
+      m._id === updatedMessage._id ? updatedMessage : m
+    );
+    this.setState(
+      {messages: newMessagesArray},
+      () => this.props.history.push('/messages')
+    );
+  }
+
+
+  handleDeleteMessage = async id => {
+    if (authService.getUser()) {
+      await messageAPI.deleteOne(id);
+      this.setState(state => ({
+        messages: state.messages.filter(m => m._id !== id)
+      }), () => this.props.history.push('/messages'));
+    } else {
+      this.props.history.push('/login')
+    }
+  }
+
+  handleAddReply = async (updatedMessageData, messageId) => {
+    const updatedMessage = await messageAPI.reply(updatedMessageData, messageId);
+    const newMessagesArray = this.state.messages.map(m =>
+      m._id === updatedMessage._id ? updatedMessage : m
+    );
+    this.setState(
+      { messages: newMessagesArray },
+      () => this.props.history.push('/messages')
+    );
   }
 
   async componentDidMount() {
@@ -93,15 +129,45 @@ class App extends Component {
         } />
         <Route exact path='/messages' render={() =>
           <MessageBoard 
+          handleDeleteMessage = {this.handleDeleteMessage}
           messages = {this.state.messages}
           user={this.state.user}
           />
         } />
-        <Route exact path='/messages/add' render={() =>
-          <MessagePost 
+        <Route 
+          exact path='/replies' 
+          render={({ location }) =>
+            authService.getUser() ?
+          <Replies 
+            handleDeleteMessage = {this.handleDeleteMessage}
+            handleAddReply={this.handleAddReply}
+            messages = {this.state.messages}
+            location={location}
+            users={this.state.users}
+            user={this.state.user}
+          />:
+          <Redirect to='/login' />
+        } />
+        <Route
+          exact path='/editmessage' render={({ location }) =>
+            authService.getUser() ?
+              <MessageEdit
+                handleUpdateMessage={this.handleUpdateMessage}
+                location={location}
+                user={this.state.user}
+              />
+              :
+              <Redirect to='/login' />
+          } />
+        <Route 
+          exact path='/messages/add' 
+          render={() =>
+            authService.getUser() ?
+          <MessagePost
             handleMessagePost={this.handleMessagePost}
             user={this.state.user}
-          />
+          />:
+          <Redirect to='/login' />
         } />
         <Route exact path='/profile' render={() =>
           <ProfilePage
