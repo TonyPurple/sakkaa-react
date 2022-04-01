@@ -80,7 +80,7 @@ class SignupForm extends Component {
             onChange={this.handleChange}
           />
           &nbsp;
-          <button disabled={this.isFormInvalid()}>Sign Up</button>
+          <button className='btn' type="submit" disabled={this.isFormInvalid()}>Sign Up</button>
           &nbsp;&nbsp;
           <Link to='/'>Cancel</Link>
         </form>

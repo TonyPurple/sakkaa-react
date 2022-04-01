@@ -18,8 +18,7 @@ const userSchema = new Schema({
     trim: true,
     minLength: 3,
     required: true
-  },
-  profile: {type: mongoose.Schema.Types.ObjectId, ref: "Profile"}
+  }
 }, {
   timestamps: true,
 });

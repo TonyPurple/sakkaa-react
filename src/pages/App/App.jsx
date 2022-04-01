@@ -7,20 +7,20 @@ import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from '../Users/Users'
 import * as messageAPI from '../../services/messages-api'
+import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import MessagePost from "../MessagePost/MessagePost";
 import Replies from '../Replies/Replies'
 import MessageEdit from '../MessageEdit/MessageEdit'
-import ProfilePage from "../Profile/Profile";
-import CountryPage from "../CountryPage/CountryPage";
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-    user: authService.getUser(),
-    messages: [],
+      loggedIn: false,
+      user: authService.getUser(),
+      messages: [],
   }};
 
   handleLogout = () => {
@@ -32,18 +32,6 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
   };
-
-  getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
-        q = window.location.hash.substring(1);
-    e = r.exec(q)
-    while (e) {
-       hashParams[e[1]] = decodeURIComponent(e[2]);
-       e = r.exec(q);
-    }
-    return hashParams;
-  }
 
   handleMessagePost = async newMessageData => {
     const newMessage = await messageAPI.create(newMessageData);
@@ -89,13 +77,15 @@ class App extends Component {
 
   async componentDidMount() {
     const messages = await messageAPI.getAll();
+    const users = await userService.getAllUsers();
     this.setState({ messages })
+    this.setState({ users })
   }
-
+  
   render() {
     const { user } = this.state
     return (
-      <>
+<>
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Route
           exact
@@ -120,12 +110,18 @@ class App extends Component {
         <Route
           exact
           path="/users"
-          render={() =>
-            user ? <Users /> : <Redirect to="/login" />
-          }
+          render={() => (user ? 
+          <Users 
+          users={this.state.users}
+          /> 
+          : 
+          <Redirect to="/login" />)}
         />
         <Route exact path='/' render={() =>
-          <LandingPage />
+          <LandingPage 
+          user={user}
+          history={this.props.history}
+          />
         } />
         <Route exact path='/messages' render={() =>
           <MessageBoard 
@@ -168,18 +164,6 @@ class App extends Component {
             user={this.state.user}
           />:
           <Redirect to='/login' />
-        } />
-        <Route exact path='/profile' render={() =>
-          <ProfilePage
-            handleMessagePost={this.handleMessagePost}
-            user={this.state.user}
-          />
-        } />
-        <Route exact path='/countries' render={() =>
-          <CountryPage
-            handleMessagePost={this.handleMessagePost}
-            user={this.state.user}
-          />
         } />
       </>
     );

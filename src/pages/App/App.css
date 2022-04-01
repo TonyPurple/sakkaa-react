@@ -1,21 +1,3 @@
-.App-header {
-  background-color: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2vmin;
-  font-size: 2.5vmin;
-  color: var(--background);
-}
-
-.App main {
-  background-color: var(--background);
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
 div, button {
   margin: 10px;
 }
