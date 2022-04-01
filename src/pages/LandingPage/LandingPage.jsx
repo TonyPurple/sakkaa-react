@@ -4,7 +4,8 @@ import './LandingPage.css'
 function LandingPage() {
     return (
         <>
-            <h1>Welcome to サッカー Sakkaa.</h1>
+            <h1>Welcome to サッカーボード Sakkaa Boudo.</h1>
+            <p>A place for soccer fans to share their wins and losses.</p>
             <img className="landing-logo" src="/sakkaa-logos.jpeg" alt=""/>
 
         </>

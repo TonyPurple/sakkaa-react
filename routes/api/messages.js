@@ -3,10 +3,10 @@ const router = express.Router();
 const messagesCtrl = require('../../controllers/messages');
 
 /*---------- Public Routes ----------*/
-router.get('/', messagesCtrl.index)
 
 /*---------- Protected Routes ----------*/
 router.use(require("../../config/auth"));
+router.get('/', messagesCtrl.index)
 router.post('/', checkAuth, messagesCtrl.create);
 router.get('/:id',checkAuth, messagesCtrl.show)
 router.put('/:id', checkAuth, messagesCtrl.update)
