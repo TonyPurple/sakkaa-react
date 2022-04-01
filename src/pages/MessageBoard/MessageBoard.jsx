@@ -12,11 +12,12 @@ function MessageBoard(props, message) {
                 <Table striped bordered hover responsive variant="dark">
                     <thead>
                         <tr>
+                        <th>Details</th>
                         <th>Topic:</th>
                         <th>Posted By:</th>
                         <th>Replies:</th>
                         <th>Date Added:</th>
-                        <th>Details</th>
+                        {/* <th>Details</th> */}
                         </tr>
                     </thead>
                     {props.messages.reverse().map(message =>
