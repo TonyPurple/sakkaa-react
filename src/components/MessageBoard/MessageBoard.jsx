@@ -7,11 +7,7 @@ function MessageTable(props) {
         <>
             <tbody>
                 <tr>
-                    <td>{props.message.topic}</td>
-                    <td>{props.message.postedBy.name}</td>
-                    <td>{props.message.replies.length}</td>
-                    <td>{props.message.createdAt.toLocaleString()}</td>
-                    <td 
+                <td 
                         className="view-link">
                             <Link
                             to={{
@@ -20,6 +16,10 @@ function MessageTable(props) {
                             }}>
                             View Message
                             </Link></td>
+                    <td>{props.message.topic}</td>
+                    <td>{props.message.postedBy.name}</td>
+                    <td>{props.message.replies.length}</td>
+                    <td>{props.message.createdAt.toLocaleString()}</td>
                 </tr>
             </tbody>
         </>
