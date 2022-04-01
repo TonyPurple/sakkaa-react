@@ -14,13 +14,7 @@ const NavBar = ({ user, handleLogout }) => {
                     <a className="nav-link" href="/messages">Message Board</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/players">Players Index</a>
-                </li>
-                <li className="nav-item">
                     <a className="nav-link" href="/users">Users</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/profile">Profiles</a>
                 </li>
                 <li className="nav-item">
                 <a href="/" className="nav-link" onClick={handleLogout}>Log Out</a>
@@ -35,9 +29,6 @@ const NavBar = ({ user, handleLogout }) => {
           <ul id="nav-mobile" className="left">
           <ul className="nav justify-content-start align-items-center">
           <a href="/"><img className="nav-logo" src="/sakkaa-logos_black.png" height='150' alt="logo" border="0"/></a>
-            <li className="nav-item">
-                <a className="nav-link" href="/messages">Message Board</a>
-            </li>
             <li className="nav-item">
                 <a className="nav-link" href="/login">Login</a>
             </li>

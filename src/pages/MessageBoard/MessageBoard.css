@@ -1,0 +1,13 @@
+a {
+    font-size: 22px;
+}
+
+a:hover {
+    color: #F86FB5;
+}
+
+Table {
+    max-width: 1500px;
+    align-items: center;
+    margin: auto;
+}
