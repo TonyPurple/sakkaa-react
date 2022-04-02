@@ -5,3 +5,12 @@
     align-items: center;
     margin-bottom: 50px;
   }
+
+.login-form {
+    background-color: #5CB7DE;
+    margin: auto;
+    width: 600px;
+    height: 300px;
+    margin-top: 80px;
+    border-radius: 5px;
+  }

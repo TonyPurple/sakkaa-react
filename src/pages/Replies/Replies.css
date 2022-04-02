@@ -1,12 +1,4 @@
-.EditProfile {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-  
-  .addreply-div {
+.addreply-div {
     background-color: #5CB7DE;
     margin: auto;
     width: 500px;
@@ -16,20 +8,20 @@
     margin-bottom: 90px;
   }
   
-  textarea {
+textarea {
     margin: auto;
     font-size: 20px;
   }
 
-  #table {
+#table {
       margin-bottom: 10px;
   }
 
-  h4 {
+h4 {
       padding-top: 15px;
   }
 
-  .message-div {
+.message-div {
     background-color: #5CB7DE;
     margin: 20px auto;
     max-width: 800px;
@@ -38,7 +30,7 @@
     border-radius: 5px;
   }
   
-  .btn {
+.btn {
     background-color:#F86FB5;
     color: var(--black);
     font-size: larger;

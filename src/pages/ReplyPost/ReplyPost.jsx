@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './ReplyPost.css'
 
 class ReplyPost extends Component {
     state = { 

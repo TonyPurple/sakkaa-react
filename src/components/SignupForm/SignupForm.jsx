@@ -37,7 +37,7 @@ class SignupForm extends Component {
   render() {
     const { name, email, password, passwordConf } = this.state;
     return (
-      <div>
+      <div className="signup-form">
         <h3>Sign Up</h3>
         <form autoComplete='off' onSubmit={this.handleSubmit}>
           <label htmlFor='name'>Name: </label>
@@ -49,7 +49,7 @@ class SignupForm extends Component {
             name='name'
             onChange={this.handleChange}
           />
-          &nbsp;
+          <br></br>
           <label htmlFor='email'>Email: </label>
           <input
             type='text'
@@ -59,7 +59,7 @@ class SignupForm extends Component {
             name='email'
             onChange={this.handleChange}
           />
-          &nbsp;
+          <br></br>
           <label htmlFor='password'>Password: </label>
           <input
             type='password'
@@ -69,7 +69,7 @@ class SignupForm extends Component {
             name='password'
             onChange={this.handleChange}
           />
-          &nbsp;
+          <br></br>
           <label htmlFor='confirm'>Confirm Password: </label>
           <input
             type='password'
@@ -79,7 +79,7 @@ class SignupForm extends Component {
             name='passwordConf'
             onChange={this.handleChange}
           />
-          &nbsp;
+          <br></br>
           <button className='btn' type="submit">Sign Up</button>&nbsp;&nbsp;&nbsp;
           <Link className='btn' to='/'>
             Cancel
