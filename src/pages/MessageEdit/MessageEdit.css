@@ -7,13 +7,13 @@
   }
   
 .EditMessage-form {
-        background-color: #5CB7DE;
-        margin: auto;
-        width: 600px;
-        height: 525px;
-        margin-top: 80px;
-        border-radius: 5px;
-      }
+    background-color: #5CB7DE;
+    margin: auto;
+    width: 600px;
+    height: 525px;
+    margin-top: 80px;
+    border-radius: 5px;
+  }
   
   h3 {
     font-size: 40px;

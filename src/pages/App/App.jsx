@@ -21,6 +21,7 @@ class App extends Component {
       loggedIn: false,
       user: authService.getUser(),
       messages: [],
+      users: []
   }};
 
   handleLogout = () => {
@@ -111,16 +112,14 @@ class App extends Component {
           exact
           path="/users"
           render={() => (user ? 
-          <Users 
-          users={this.state.users}
-          /> 
+            <Users 
+            users={this.state.users}
+            /> 
           : 
           <Redirect to="/login" />)}
         />
         <Route exact path='/' render={() =>
           <LandingPage 
-          user={user}
-          history={this.props.history}
           />
         } />
         <Route exact path='/messages' render={() =>

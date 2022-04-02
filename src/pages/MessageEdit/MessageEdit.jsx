@@ -43,13 +43,13 @@ render() {
                     </div>
                     <button
                         type="submit"
-                        className="btn green"
+                        className="btn"
                         disabled={this.state.invalidForm}
                     >
                         Update Message
                     </button>
                     <Link 
-                        className="btn red"
+                        className="btn"
                         to={{
                             pathname: '/messages'
                         }}

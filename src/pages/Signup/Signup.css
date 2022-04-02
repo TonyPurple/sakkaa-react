@@ -5,3 +5,25 @@
     align-items: center;
     margin-bottom: 50px;
   }
+
+.signup-form {
+    background-color: #5CB7DE;
+    margin: auto;
+    width: 600px;
+    height: 450px;
+    margin-top: 80px;
+    border-radius: 5px;
+  }
+  
+h3 {
+    font-size: 40px;
+    margin-top: 50px;
+    padding-top: 20px;
+    font-weight: 900;
+  }
+  
+input {
+    margin: 15px;
+    width: 700px;
+    font-size: larger;
+  }

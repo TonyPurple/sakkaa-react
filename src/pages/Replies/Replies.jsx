@@ -16,11 +16,11 @@ function Replies(props, reply) {
             </div>
             {props.user && (props.user._id === props.location.state.postedBy._id) &&
                 <>
-                    <button type="submit" className="btn red" onClick={() => props.handleDeleteMessage(props.location.state._id)}>
+                    <button type="submit" className="btn" onClick={() => props.handleDeleteMessage(props.location.state._id)}>
                         Delete
                     </button>
                     <Link 
-                        className="btn yellow black-text"
+                        className="btn"
                         to={{
                             pathname: '/editmessage',
                             state: props.location.state
